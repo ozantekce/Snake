@@ -763,12 +763,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4da22fc3a81edc4290bb40a532e8030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSize: 4
+  gameSize: 50
   gameArea: {fileID: 2013312262}
   snakeRenderer: {fileID: 1000196049}
   food: {fileID: 2069970815}
   gameOver: 0
-  gameSpeed: 1.8
+  usePathFinder: 1
+  gameSpeed: 1
+  _readInput: 0
 --- !u!4 &1344262916
 Transform:
   m_ObjectHideFlags: 0
@@ -1534,8 +1536,8 @@ Transform:
   m_GameObject: {fileID: 6910196345281174404}
   m_LocalRotation: {x: -0.019546526, y: -0, z: -0, w: 0.99980897}
   m_LocalPosition: {x: 0, y: 0.05, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6912883929634087928}
   - {fileID: 6913340756120405372}

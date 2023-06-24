@@ -131,6 +131,12 @@ public class TailList
 
     }
 
+    public void MoveForward(Direction dir)
+    {
+        Vector2Int nextPos = GetHeadCurrentPos() + dir.ToDelta();
+        MoveForward(nextPos);
+    }
+
 
     public void MoveBackward(Vector2Int nextPos)
     {
@@ -150,6 +156,13 @@ public class TailList
         AddFirst(temp);
         _size++;
     }
+
+    public void AddNode(Direction dir)
+    {
+        Vector2Int nextPos = GetHeadCurrentPos() + dir.ToDelta();
+        AddNode(nextPos);
+    }
+
 
     public void AddNodeToLast(Vector2Int nextPos)
     {

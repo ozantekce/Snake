@@ -12,7 +12,7 @@ public class SnakeRenderer : MonoBehaviour
 
 
     public LineRenderer lineRenderer;
-    private const int AddLineToEachMove = 10;
+    private const int AddLineToEachMove = 30;
 
     private int _currentSize;
     private int _targetSize;
@@ -25,8 +25,8 @@ public class SnakeRenderer : MonoBehaviour
     {
 
         head.transform.localScale = new Vector3(1,1,20) * size;
-        lineRenderer.endWidth = size * 15f;
-        lineRenderer.startWidth = size * 8f;
+        lineRenderer.endWidth = size * 20f;
+        lineRenderer.startWidth = size * 15f;
     }
 
     public void ArrangeStartPosition(Vector3 position)
@@ -38,7 +38,7 @@ public class SnakeRenderer : MonoBehaviour
 
     public void ArrangeTailSize(int tailSize, float gameSpeed)
     {
-        _targetSize = (tailSize * AddLineToEachMove)-5;
+        _targetSize = (tailSize * AddLineToEachMove)-8;
         //trailRenderer.time = (0.5f + tailSize - 1)/ gameSpeed;
         //lengthBasedTrail.maxLength = tailSize;
     }
@@ -62,7 +62,7 @@ public class SnakeRenderer : MonoBehaviour
 
         Vector3 delta = endPos - startPos;
         delta.Normalize();
-        Debug.Log(delta);
+        //Debug.Log(delta);
         float angle = head.transform.eulerAngles.z;
         float x = delta.x;
         float y = delta.y;
@@ -143,7 +143,6 @@ public class SnakeRenderer : MonoBehaviour
 
         if (n >= oldPositions.Length)
         {
-            // Tüm noktalarý sil
             lineRenderer.positionCount = 0;
         }
         else

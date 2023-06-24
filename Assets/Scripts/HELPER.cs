@@ -44,6 +44,8 @@ public static class HELPER
     };
 
 
+    private static Dictionary<Vector2Int, List<Vector2Int>> NextPositions = new Dictionary<Vector2Int, List<Vector2Int>>();
+
     public static Vector2Int ToDelta(this Direction direction)
     {
         return DirectionToDeltaDic[direction];
@@ -61,6 +63,11 @@ public static class HELPER
         return CharToDirectionDic[c];
     }
 
+    public static char ToChar(this Vector2Int delta)
+    {
+        return DeltaToDirectionDic[delta].ToChar();
+    }
+
 
     public static char ToChar(this Direction direction)
     {
@@ -73,6 +80,40 @@ public static class HELPER
         return currentPos + direction.ToDelta();
     }
 
+
+    public static List<Vector2Int> GetNextPoses(this Vector2Int currentPos)
+    {
+
+        List<Vector2Int> result;
+        if(NextPositions.ContainsKey(currentPos)) { 
+            result = NextPositions[currentPos];
+        }
+        else
+        {
+            result = new List<Vector2Int>
+            {
+                currentPos.NextPos(Direction.Left),
+                currentPos.NextPos(Direction.Right),
+                currentPos.NextPos(Direction.Up),
+                currentPos.NextPos(Direction.Down)
+            };
+            NextPositions[currentPos] = result;
+        }
+
+        return result;
+
+    }
+
+
+    public static bool CheckPositionValid(this Vector2Int nextPos, int gameSize)
+    {
+        int x = nextPos.x;
+        if (x < 0 || x >= gameSize) return false;
+        int y = nextPos.y;
+        if (y < 0 || y >= gameSize) return false;
+
+        return true;
+    }
 
 
     private static System.Random rng = new System.Random();

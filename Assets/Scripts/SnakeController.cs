@@ -15,7 +15,7 @@ public class SnakeController
     #endregion
 
 
-    private Direction _lastDirection = Direction.None;
+    private Direction _lastDirection = Direction.Right;
     
 
 
@@ -44,7 +44,7 @@ public class SnakeController
         Vector2Int nextPos = HeadPosition.NextPos(direction);
 
 
-        if(!NextPositionValid(nextPos)) // cannot move out of game area
+        if(!nextPos.CheckPositionValid(GameSize)) // cannot move out of game area
         {
             Debug.LogError("DIE");
             IsAlive = false;
@@ -119,17 +119,6 @@ public class SnakeController
     }
 
 
-    private bool NextPositionValid(Vector2Int nextPos)
-    {
-        int x = nextPos.x;
-        if (x < 0 || x >= GameSize) return false;
-        int y = nextPos.y;
-        if (y < 0 || y >= GameSize) return false;
-
-        return true;
-    }
-
-
     private bool IsPositionEmpty(Vector2Int pos)
     {
         if(pos == LastTailPosition) return true; // snake cannot eat lastTail
@@ -147,6 +136,7 @@ public class SnakeController
     public Vector2Int LastTailPosition { get => _tailList.GetLastTailCurrentPos(); }
     public bool IsAlive { get => _isAlive; set => _isAlive = value; }
     public TailList TailList { get => _tailList; set => _tailList = value; }
+    public Direction LastDirection { get => _lastDirection; set => _lastDirection = value; }
 
     #endregion
 
