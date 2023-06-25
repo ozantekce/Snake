@@ -1,2 +1,2 @@
 # Snake
- Unity Snake Game
+https://ozantekce.itch.io/snake
