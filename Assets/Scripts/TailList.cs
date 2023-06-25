@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class TailList
@@ -205,6 +206,27 @@ public class TailList
     public bool ContainPos(Vector2Int pos)
     {
         return _containingPositions.Contains(pos);
+    }
+
+    public bool ContainPos(Vector2Int pos, int skip)
+    {
+        
+        Node current = LastTail;
+
+        if (skip > Size) return false;
+
+        while(current != null)
+        {
+            if (skip <= 0)
+            {
+                if(current.pos == pos) return true;
+            }
+            skip--;
+            current = current.prev;
+        }
+
+        return false;
+
     }
 
 

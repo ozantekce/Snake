@@ -12,7 +12,7 @@ public class SnakeRenderer : MonoBehaviour
 
 
     public LineRenderer lineRenderer;
-    private const int AddLineToEachMove = 30;
+    private const int AddLineToEachMove = 15;
 
     private int _currentSize;
     private int _targetSize;
@@ -38,7 +38,7 @@ public class SnakeRenderer : MonoBehaviour
 
     public void ArrangeTailSize(int tailSize, float gameSpeed)
     {
-        _targetSize = (tailSize * AddLineToEachMove)-8;
+        _targetSize = (tailSize * AddLineToEachMove);
         //trailRenderer.time = (0.5f + tailSize - 1)/ gameSpeed;
         //lengthBasedTrail.maxLength = tailSize;
     }

@@ -15,7 +15,7 @@ public class SnakeController
     #endregion
 
 
-    private Direction _lastDirection = Direction.Right;
+    private Direction _lastDirection = Direction.None;
     
 
 
@@ -53,7 +53,7 @@ public class SnakeController
 
         if (!IsPositionEmpty(nextPos)) // cannot move full cell
         {
-            Debug.LogError("DIE");
+            Debug.LogError("DIE "+ nextPos+ " dir : "+direction);
             IsAlive = false;
             return;
         }
